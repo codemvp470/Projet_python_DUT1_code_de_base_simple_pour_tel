@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <title>Modifier Rendez-vous</title>
+</head>
+<body>
+
+    <h1>✏️ Modifier le Rendez-vous</h1>
+    <hr>
+
+    <form method="POST">
+
+        <label>Nom :</label><br>
+        <input type="text" name="nom" value="{{ rdv.nom }}" required><br><br>
+
+        <label>Prénom :</label><br>
+        <input type="text" name="prenom" value="{{ rdv.prenom }}" required><br><br>
+
+        <label>Age :</label><br>
+        <input type="number" name="age" value="{{ rdv.age }}" required><br><br>
+
+        <label>Groupe sanguin :</label><br>
+        <select name="groupe_sanguin" required>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+            <option value="sans">Aucune idée</option>
+        </select><br><br>
+
+        <label>Fonction :</label><br>
+        <input type="text" name="fonction" value="{{ rdv.fonction }}" required><br><br>
+
+        <label>Date :</label><br>
+        <input type="date" name="date" value="{{ rdv.date }}" required><br><br>
+
+        <label>Heure :</label><br>
+        <input type="time" name="heure" value="{{ rdv.heure }}" required><br><br>
+
+        <label>Motif :</label><br>
+        <textarea name="motif" rows="4" cols="40" required>{{ rdv.motif }}</textarea><br><br>
+
+        <button type="submit">✅ Enregistrer les modifications</button>
+
+    </form>
+
+    <br>
+    <a href="/patient/historique">⬅️ Retour à l'historique</a>
+
+</body>
+</html>

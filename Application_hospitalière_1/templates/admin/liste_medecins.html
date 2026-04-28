@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <title>Gestion des médecins</title>
+</head>
+<body>
+
+    <h1>👨‍⚕️ Gestion des médecins</h1>
+    <hr>
+
+    <h2>➕ Ajouter un médecin</h2>
+
+    
+    <form method="POST" action="{{ url_for('liste_medecins') }}">
+
+        <label>Nom complet :</label><br>
+        <input type="text" name="nom_complet" required><br><br>
+
+        <label>Email :</label><br>
+        <input type="email" name="email" required><br><br>
+
+        <label>Spécialité :</label><br>
+        <input type="text" name="specialite" required><br><br>
+
+        <label>Téléphone :</label><br>
+        <input type="tel" name="telephone" value="+241" required><br><br>
+
+        <label>Mot de passe :</label><br>
+        <input type="password" name="password" required><br><br>
+
+        <button type="submit">Enregistrer</button>
+
+    </form>
+
+    <hr>
+
+    <h2>📋 Liste des médecins</h2>
+
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>ID</th>
+            <th>Nom complet</th>
+            <th>Email</th>
+            <th>Spécialité</th>
+            <th>password</th>
+            <th>Téléphone</th>
+            <th>Action</th>
+            
+        </tr>
+        {% for medecin in medecins %}
+        <tr>
+            <td>{{ medecin.id }}</td>
+            <td>{{ medecin.nom }}</td>
+            <td>{{ medecin.email }}</td>
+            <td>{{ medecin.specialite }}</td>
+            <td>{{ medecin.password}}</td>
+            <td>{{ medecin.telephone }}</td>
+            <td>
+                <a href="/admin/supprimer-medecin/{{ medecin.id }}">
+                    <button>🗑️ Supprimer</button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="{{ url_for('admin_dashboard') }}">Retour dashboard admin</a>
+
+</body>
+</html>
