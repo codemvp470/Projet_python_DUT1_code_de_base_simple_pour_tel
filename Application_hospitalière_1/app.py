@@ -137,7 +137,7 @@ def prise_rdv():
             date=request.form['date'],
             heure=request.form['heure'],
             motif=request.form['motif'],
-            medecin_id=request.form.get('medecin_id') or None,
+            medecin_id=int(request.form.get('medecin_id')) if request.form.get('medecin_id') else None,
             patient_id=patient_id,
             statut="en_attente"
         )
@@ -507,5 +507,4 @@ if __name__ == "__main__":
             db.session.add(admin)
             db.session.commit()
 
-    # ✅ Corrigé - accessible sur tous les appareils
-app.run(debug=True, use_reloader=False, host='0.0.0.0', port=5000)
+    app.run(debug=True, use_reloader=False, host='0.0.0.0', port=5000)
